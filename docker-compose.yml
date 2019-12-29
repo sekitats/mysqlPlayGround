@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  db:
+    build: ./server/initdb.d
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+      MYSQL_DATABASE: 'mysql'
+      MYSQL_USER: 'root'
+      TZ: 'Asia/Tokyo'
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./server/initdb.d:/docker-entrypoint-initdb.d
